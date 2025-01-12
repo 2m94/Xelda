@@ -1,3 +1,4 @@
+import Registry from "./classes/Registry.js";
 
 const canvas = document.getElementById("gameScreen");  //Global Variable outside of the Game Class
 const c = canvas.getContext("2d");          //getContext is built in to the canvas object and can be either 2d or 3d
@@ -10,7 +11,7 @@ class Game{
     constructor(){
 
         this.player = undefined; //this is referring to this object and player refers to link
-
+        this.registry = new Registry();
     }
 
     //The 3 main methods of this game
@@ -22,6 +23,10 @@ class Game{
             width:60
 
         }
+
+        this.registry.addSystem("MovementSystem");
+        console.log(this.registry.systems);
+
         document.addEventListener("keydown", this.handleUserInput)
         document.addEventListener("keyup", this.handleUserInput)
 
